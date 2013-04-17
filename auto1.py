@@ -21,6 +21,7 @@ click_login.click()
 driver.set_page_load_timeout(30)
 children_link = driver.find_element_by_link_text("Children")
 children_link.click()
+driver.set_page_load_timeout(30)
 add_new_child_link = driver.find_element_by_class_name("add-content-button")
 add_new_child_link.click()
 
