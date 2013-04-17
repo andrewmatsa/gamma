@@ -17,3 +17,4 @@ username_editname.send_keys("ckids_admin")
 passw_editpass.send_keys("ckids_admin")
 click_login.click()
 
+test
