@@ -63,13 +63,19 @@ if (flag != True):
     print ("Error. Can't find option photos")
 
 autoallergies = driver.find_element_by_id("edit-field-child-allergies-und")
-autoallergies.send_keys("plums") #list of all allergies
+autoallergies.send_keys("Plums") #list of all allergies
 
-
-
-
+add_new_family = driver.find_element_by_id("edit-field-child-family-und")
+flag = False
+for option in add_new_family.find_elements_by_tag_name('option'):
+    if option.text == '== Add New Family for this Child ==':
+        option.click()
+        print ('Add family: ' + option.text)
+        flag = True
 
 
 # save_changes = driver.find_element_by_id("edit-submit")
 # save_changes.click()
 
+link_cancel = driver.find_element_by_class_name("cancel-button")
+link_cancel.click()
