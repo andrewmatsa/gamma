@@ -25,10 +25,13 @@ driver.set_page_load_timeout(30)
 add_new_child_link = driver.find_element_by_class_name("add-content-button")
 add_new_child_link.click()
 
-# firstname = driver.find_element_by_class_name("form-text required") #First name
-# lastname = driver.find_element_by_class_name("text-full form-text") # Last name
-driver.set_page_load_timeout(30)
+driver.set_page_load_timeout(10)
+firstname = driver.find_element_by_id("edit-title") # First name
+firstname.send_keys("test_first_name")
+lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
+lastname.send_keys("test_last_name")
 
+driver.set_page_load_timeout(40)
 droproom = driver.find_element_by_id("edit-field-child-room-und")
 flag = False
 for option in droproom.find_elements_by_tag_name('option'):
@@ -59,10 +62,14 @@ for option in dropphotos.find_elements_by_tag_name('option'):
 if (flag != True):
     print ("Error. Can't find option photos")
 
+autoallergies = driver.find_element_by_id("edit-field-child-allergies-und")
+autoallergies.send_keys("plums") #list of all allergies
 
 
 
-#alergies autocomplete
-#family
-#buttom "save"
+
+
+
+# save_changes = driver.find_element_by_id("edit-submit")
+# save_changes.click()
 
