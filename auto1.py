@@ -27,9 +27,9 @@ add_new_child_link.click()
 
 driver.set_page_load_timeout(10)
 firstname = driver.find_element_by_id("edit-title") # First name
-firstname.send_keys("test_first_name")
+firstname.send_keys("Children_first1")
 lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
-lastname.send_keys("test_last_name")
+lastname.send_keys("Children_last1")
 
 driver.set_page_load_timeout(40)
 droproom = driver.find_element_by_id("edit-field-child-room-und")
@@ -66,12 +66,10 @@ autoallergies = driver.find_element_by_id("edit-field-child-allergies-und")
 autoallergies.send_keys("Plums") #list of all allergies
 
 add_new_family = driver.find_element_by_id("edit-field-child-family-und")
-flag = False
 for option in add_new_family.find_elements_by_tag_name('option'):
     if option.text == '== Add New Family for this Child ==':
         option.click()
         print ('Add family: ' + option.text)
-        flag = True
 
 
 # save_changes = driver.find_element_by_id("edit-submit")
@@ -79,3 +77,9 @@ for option in add_new_family.find_elements_by_tag_name('option'):
 
 link_cancel = driver.find_element_by_class_name("cancel-button")
 link_cancel.click()
+
+driver.get("http://develop.ckids.web.drucode.com/node/add/family")
+firstname = driver.find_element_by_id("edit-title") # First name
+firstname.send_keys("Children_first1")
+lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
+lastname.send_keys("Children_last1")
