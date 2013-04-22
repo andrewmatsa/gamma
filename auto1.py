@@ -25,4 +25,17 @@ driver.set_page_load_timeout(30)
 add_new_child_link = driver.find_element_by_class_name("add-content-button")
 add_new_child_link.click()
 
+# firstname = driver.find_element_by_class_name("form-text required") #First name
+# lastname = driver.find_element_by_class_name("text-full form-text") # Last name
+droproom = driver.find_element_by_class_name("form-select")
+
+
+driver.find_element("14")#room2
+# driver.find_element("15")#room3
+#room
+#sex
+#photos
+#alergies autocomplete
+#family
+#buttom "save"
 
