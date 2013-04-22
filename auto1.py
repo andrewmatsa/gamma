@@ -18,7 +18,7 @@ passw_editpass.send_keys("creche_admin")
 click_login.click()
 
 # Creating Children
-driver.set_page_load_timeout(30)
+driver.set_page_load_timeout(40)
 children_link = driver.find_element_by_link_text("Children")
 children_link.click()
 driver.set_page_load_timeout(30)
@@ -28,20 +28,40 @@ add_new_child_link.click()
 # firstname = driver.find_element_by_class_name("form-text required") #First name
 # lastname = driver.find_element_by_class_name("text-full form-text") # Last name
 driver.set_page_load_timeout(30)
-droproom = driver.find_element_by_class_name("form-select")
+
+droproom = driver.find_element_by_id("edit-field-child-room-und")
+flag = False
 for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Room #3':
+    if option.text == 'Room #2': # now system has 3 rooms
         option.click()
-        print ('You selected:')
-    else:
-        print ('Error: No rooms in this centre!')
+        print ('You selected: ' + option.text)
+        flag = True
+if (flag != True):
+    print ("Error. Can't  find Room")
+
+dropsex = driver.find_element_by_id("edit-field-child-sex-und")
+flag = False
+for option in dropsex.find_elements_by_tag_name('option'):
+    if option.text == 'Male': #or Female
+        option.click()
+        print ('You selected: ' + option.text)
+        flag = True
+if (flag != True):
+    print ("Error. Can't find option sex")
+
+dropphotos = driver.find_element_by_id("edit-field-child-photos-und")
+flag = False
+for option in dropphotos.find_elements_by_tag_name('option'):
+    if option.text == 'Allowed': #or Not Allowed
+        option.click()
+        print ('You selected: ' + option.text)
+        flag = True
+if (flag != True):
+    print ("Error. Can't find option photos")
 
 
-# driver.find_element("14")#room2
-# driver.find_element("15")#room3
-#room
-#sex
-#photos
+
+
 #alergies autocomplete
 #family
 #buttom "save"
