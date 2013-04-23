@@ -17,19 +17,19 @@ username_editname.send_keys("creche_admin")
 passw_editpass.send_keys("creche_admin")
 click_login.click()
 
-# ------ADD Children
-# driver.set_page_load_timeout(40)
-# children_link = driver.find_element_by_link_text("Children")
-# children_link.click()
-# driver.set_page_load_timeout(30)
-# add_new_child_link = driver.find_element_by_class_name("add-content-button")
-# add_new_child_link.click()
-#
-# driver.set_page_load_timeout(10)
-# firstname = driver.find_element_by_id("edit-title") # First name
-# firstname.send_keys("Children_first1")
-# lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
-# lastname.send_keys("Children_last1")
+# #------ADD Children
+driver.set_page_load_timeout(40)
+children_link = driver.find_element_by_link_text("Children")
+children_link.click()
+driver.set_page_load_timeout(30)
+add_new_child_link = driver.find_element_by_class_name("add-content-button")
+add_new_child_link.click()
+
+driver.set_page_load_timeout(10)
+firstname = driver.find_element_by_id("edit-title") # First name
+firstname.send_keys("Children_first1")
+lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
+lastname.send_keys("Children_last1")
 #
 # driver.set_page_load_timeout(40)
 # droproom = driver.find_element_by_id("edit-field-child-room-und")
@@ -78,7 +78,7 @@ click_login.click()
 # link_cancel = driver.find_element_by_class_name("cancel-button")
 # link_cancel.click()
 
-#---- ADD FAMILY
+##---- ADD FAMILY
 # driver.get("http://develop.ckids.web.drucode.com/node/add/family")
 #
 # if driver.get == False:
@@ -109,100 +109,102 @@ click_login.click()
 # link_cancel.click()
 
 
-#---- ADD Carer
-driver.get("http://develop.ckids.web.drucode.com/node/add/carer")
-driver.set_page_load_timeout(40)
-firstname = driver.find_element_by_id("edit-title") # First name
-firstname.send_keys("Carer_first1")
-lastname = driver.find_element_by_id("edit-field-carer-second-name-und-0-value") # Last name
-lastname.send_keys("Carer_last1")
-email_family = driver.find_element_by_id("edit-field-carer-email-und-0-email")
-email_family.send_keys("testauto@gmail.com")
-
-dropsexcarer = driver.find_element_by_id("edit-field-carer-sex-und")
-flag = False
-for option in dropsexcarer.find_elements_by_tag_name('option'):
-    if option.text == 'Male': #or Female
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-    print ("Error. Can't find option sex")
-
-# photocarer = driver.find_element_by_id("edit-field-carer-photo-und-0-upload")
-# photocarer.click()
-
-droproom = driver.find_element_by_id("edit-field-carer-room-mon-und")
-flag = False
-for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Not Working':
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-    print ("Error. Can't find room: " + option.text)
-
-droproom = driver.find_element_by_id("edit-field-carer-room-tue-und")
-flag = False
-for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Room #1':
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-    print ("Error. Can't find room: " + option.text)
-
-droproom = driver.find_element_by_id("edit-field-carer-room-wed-und")
-flag = False
-for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Room #2':
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-    print ("Error. Can't find room: " + option.text)
-
-droproom = driver.find_element_by_id("edit-field-carer-room-thu-und")
-flag = False
-for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Room #3':
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-    print ("Error. Can't find room: " + option.text)
-
-droproom = driver.find_element_by_id("edit-field-carer-room-fri-und")
-flag = False
-for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Room #4':
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-    print ("Error. Can't find room: " + option.text)
-
-droproom = driver.find_element_by_id("edit-field-carer-room-sat-und")
-flag = False
-for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Room #5':
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-   print ("Error. Can't find room: " + option.text)
-
-droproom = driver.find_element_by_id("edit-field-carer-room-sun-und")
-flag = False
-for option in droproom.find_elements_by_tag_name('option'):
-    if option.text == 'Room #6':
-        option.click()
-        print ('You selected: ' + option.text)
-        flag = True
-if (flag != True):
-    print ("Error. Can't find room: " + option.text)
-
-# # # save_changes = driver.find_element_by_id("edit-submit")
-# # # save_changes.click()
-link_cancel = driver.find_element_by_class_name("cancel-button")
-link_cancel.click()
+##---- ADD Carer
+# driver.get("http://develop.ckids.web.drucode.com/node/add/carer")
+# driver.set_page_load_timeout(40)
+# firstname = driver.find_element_by_id("edit-title") # First name
+# firstname.send_keys("Carer_first1")
+# lastname = driver.find_element_by_id("edit-field-carer-second-name-und-0-value") # Last name
+# lastname.send_keys("Carer_last1")
+# email_family = driver.find_element_by_id("edit-field-carer-email-und-0-email")
+# email_family.send_keys("testauto@gmail.com")
+#
+# dropsexcarer = driver.find_element_by_id("edit-field-carer-sex-und")
+# flag = False
+# for option in dropsexcarer.find_elements_by_tag_name('option'):
+#     if option.text == 'Male': #or Female
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#     print ("Error. Can't find option sex")
+#
+# # photocarer = driver.find_element_by_id("edit-field-carer-photo-und-0-upload")
+# # photocarer.click()
+# driver.findElement(By.xpath("//div[text()='Upload Photos/Video']following-sibling::div/input")).sendKeys("C:\\MyPhoto.jpg");
+# driver.find_element_by_id("edit-field-carer-photo-und-0-upload").sendKeys("D:/stock-photo-boys-and-girls-running-towards-ball-59018779.jpg")
+#
+# droproom = driver.find_element_by_id("edit-field-carer-room-mon-und")
+# flag = False
+# for option in droproom.find_elements_by_tag_name('option'):
+#     if option.text == 'Not Working':
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#     print ("Error. Can't find room: " + option.text)
+#
+# droproom = driver.find_element_by_id("edit-field-carer-room-tue-und")
+# flag = False
+# for option in droproom.find_elements_by_tag_name('option'):
+#     if option.text == 'Room #1':
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#     print ("Error. Can't find room: " + option.text)
+#
+# droproom = driver.find_element_by_id("edit-field-carer-room-wed-und")
+# flag = False
+# for option in droproom.find_elements_by_tag_name('option'):
+#     if option.text == 'Room #2':
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#     print ("Error. Can't find room: " + option.text)
+#
+# droproom = driver.find_element_by_id("edit-field-carer-room-thu-und")
+# flag = False
+# for option in droproom.find_elements_by_tag_name('option'):
+#     if option.text == 'Room #3':
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#     print ("Error. Can't find room: " + option.text)
+#
+# droproom = driver.find_element_by_id("edit-field-carer-room-fri-und")
+# flag = False
+# for option in droproom.find_elements_by_tag_name('option'):
+#     if option.text == 'Room #4':
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#     print ("Error. Can't find room: " + option.text)
+#
+# droproom = driver.find_element_by_id("edit-field-carer-room-sat-und")
+# flag = False
+# for option in droproom.find_elements_by_tag_name('option'):
+#     if option.text == 'Room #5':
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#    print ("Error. Can't find room: " + option.text)
+#
+# droproom = driver.find_element_by_id("edit-field-carer-room-sun-und")
+# flag = False
+# for option in droproom.find_elements_by_tag_name('option'):
+#     if option.text == 'Room #6':
+#         option.click()
+#         print ('You selected: ' + option.text)
+#         flag = True
+# if (flag != True):
+#     print ("Error. Can't find room: " + option.text)
+#
+# # # # save_changes = driver.find_element_by_id("edit-submit")
+# # # # save_changes.click()
+# link_cancel = driver.find_element_by_class_name("cancel-button")
+# link_cancel.click()
