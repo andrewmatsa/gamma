@@ -129,9 +129,8 @@ for option in dropsexcarer.find_elements_by_tag_name('option'):
 if (flag != True):
     print ("Error. Can't find option sex")
 
-photocarer = driver.find_element_by_id("edit-field-carer-photo-und-0-upload")
-photocarer.click()
-driver.switch_to_alert()
+# photocarer = driver.find_element_by_id("edit-field-carer-photo-und-0-upload")
+# photocarer.click()
 
 droproom = driver.find_element_by_id("edit-field-carer-room-mon-und")
 flag = False
