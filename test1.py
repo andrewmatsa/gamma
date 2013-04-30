@@ -6,7 +6,7 @@ f = open("C:\\test.csv", 'rt')
 names = []
 surnames = []
 try:
-    reader = csv.reader(f, delimiter=';', quoting=csv.QUOTE_NONE)
+    reader = csv.reader(f, delimiter=' ', quoting=csv.QUOTE_NONE)
     for row in reader:
         names.append(row[0])
         surnames.append(row[1])

@@ -1,3 +1,5 @@
+import csv
+import random
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
@@ -13,24 +15,45 @@ username_editname = driver.find_element_by_id("edit-name")
 passw_editpass = driver.find_element_by_id("edit-pass")
 click_login = driver.find_element_by_id("edit-submit")
 
-username_editname.send_keys("creche_admin")
-passw_editpass.send_keys("creche_admin")
+# username_editname.send_keys("creche_admin")
+# passw_editpass.send_keys("creche_admin")
+
+f = open("C:\\test.csv", 'rt')
+names = []
+surnames = []
+passwords = []
+somenumbers = []
+try:
+    reader = csv.reader(f, delimiter=';', quoting=csv.QUOTE_NONE)
+    for row in reader:
+        names.append(row[0])
+        surnames.append(row[1])
+        passwords.append(row[2])
+        somenumbers.append(row[3])
+    # field1.send_keys(names[random.randint(0, names.__len__() - 1)])
+    # field2.send_keys(passwords[2])
+    # field3.send_keys(passwords[random.randint(0, names.__len__() - 1)])
+    # field4.send_keys(somenumbers[random.randint(0, names.__len__() - 1)])
+finally:
+    f.close()
+
+
 click_login.click()
 
 # #------ADD Children
-driver.set_page_load_timeout(40)
-children_link = driver.find_element_by_link_text("Children")
-children_link.click()
-driver.set_page_load_timeout(30)
-add_new_child_link = driver.find_element_by_class_name("add-content-button")
-add_new_child_link.click()
-
-driver.set_page_load_timeout(10)
-firstname = driver.find_element_by_id("edit-title") # First name
-firstname.send_keys("Children_first1")
-lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
-lastname.send_keys("Children_last1")
+# driver.set_page_load_timeout(40)
+# children_link = driver.find_element_by_link_text("Children")
+# children_link.click()
+# driver.set_page_load_timeout(30)
+# add_new_child_link = driver.find_element_by_class_name("add-content-button")
+# add_new_child_link.click()
 #
+# driver.set_page_load_timeout(10)
+# firstname = driver.find_element_by_id("edit-title") # First name
+# firstname.send_keys("Children_first1")
+# lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
+# lastname.send_keys("Children_last1")
+# #
 # driver.set_page_load_timeout(40)
 # droproom = driver.find_element_by_id("edit-field-child-room-und")
 # flag = False
@@ -77,8 +100,8 @@ lastname.send_keys("Children_last1")
 #
 # link_cancel = driver.find_element_by_class_name("cancel-button")
 # link_cancel.click()
-
-##---- ADD FAMILY
+#
+# #---- ADD FAMILY
 # driver.get("http://develop.ckids.web.drucode.com/node/add/family")
 #
 # if driver.get == False:
@@ -107,9 +130,9 @@ lastname.send_keys("Children_last1")
 # # # save_changes.click()
 # link_cancel = driver.find_element_by_class_name("cancel-button")
 # link_cancel.click()
-
-
-##---- ADD Carer
+#
+#
+# #---- ADD Carer
 # driver.get("http://develop.ckids.web.drucode.com/node/add/carer")
 # driver.set_page_load_timeout(40)
 # firstname = driver.find_element_by_id("edit-title") # First name
@@ -131,8 +154,8 @@ lastname.send_keys("Children_last1")
 #
 # # photocarer = driver.find_element_by_id("edit-field-carer-photo-und-0-upload")
 # # photocarer.click()
-# driver.findElement(By.xpath("//div[text()='Upload Photos/Video']following-sibling::div/input")).sendKeys("C:\\MyPhoto.jpg");
-# driver.find_element_by_id("edit-field-carer-photo-und-0-upload").sendKeys("D:/stock-photo-boys-and-girls-running-towards-ball-59018779.jpg")
+# # driver.findElement(By.xpath("//div[text()='Upload Photos/Video']following-sibling::div/input")).sendKeys("C:\\MyPhoto.jpg");
+# # driver.find_element_by_id("edit-field-carer-photo-und-0-upload").sendKeys("D:/stock-photo-boys-and-girls-running-towards-ball-59018779.jpg")
 #
 # droproom = driver.find_element_by_id("edit-field-carer-room-mon-und")
 # flag = False
