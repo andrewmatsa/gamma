@@ -1,7 +1,0 @@
-http://docs.python.org/2/library/configparser.html
-python selenium fake person generation
-try API
-
-http://docs.python.org/3/library/random.html
-http://www.youtube.com/watch?v=57cJy5Pc5lI
-https://www.google.com.ua/search?client=opera&q=babe+name+python+exercise&sourceid=opera&ie=utf-8&oe=utf-8&channel=suggest#client=opera&hs=fRv&channel=suggest&sclient=psy-ab&q=python+:+random+choice+-+user+name+generator&oq=python+:+random+choice+-+user+name+generator&gs_l=serp.3...116483.116483.0.117722.1.1.0.0.0.0.99.99.1.1.0...0.0...1c.1.9.psy-ab.8yKLNni3jU8&pbx=1&bav=on.2,or.r_cp.r_qf.&bvm=bv.45368065,d.Yms&fp=34c3afcff24714ef&biw=1920&bih=967
