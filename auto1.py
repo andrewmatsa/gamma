@@ -1,105 +1,107 @@
 import csv
 import random
 from selenium import webdriver
+from colors import red, green, blue
 from selenium.webdriver.common.keys import Keys
 
 #initializing driver, and opening the webpage
 
+chrome_options = webdriver.ChromeOptions()
+driver = webdriver.Chrome(
+    executable_path=r"c:\chromedriver.exe",
+    chrome_options=chrome_options)
+
 profile = webdriver.FirefoxProfile()
 profile.set_preference('network.http.phishy-userpass-length', 255)
 driver = webdriver.Firefox(firefox_profile=profile)
+
+
+# --------- login ssh
 driver.get("http://admin:ckids@develop.ckids.web.drucode.com/")
 
-
+# --------- login account "Centre administration"
 username_editname = driver.find_element_by_id("edit-name")
 passw_editpass = driver.find_element_by_id("edit-pass")
 click_login = driver.find_element_by_id("edit-submit")
+username_editname.send_keys("creche_admin")
+passw_editpass.send_keys("creche_admin")
 
-# username_editname.send_keys("creche_admin")
-# passw_editpass.send_keys("creche_admin")
-
-f = open("C:\\test.csv", 'rt')
-names = []
-surnames = []
-passwords = []
-somenumbers = []
-try:
-    reader = csv.reader(f, delimiter=';', quoting=csv.QUOTE_NONE)
-    for row in reader:
-        names.append(row[0])
-        surnames.append(row[1])
-        passwords.append(row[2])
-        somenumbers.append(row[3])
-    # field1.send_keys(names[random.randint(0, names.__len__() - 1)])
-    # field2.send_keys(passwords[2])
-    # field3.send_keys(passwords[random.randint(0, names.__len__() - 1)])
-    # field4.send_keys(somenumbers[random.randint(0, names.__len__() - 1)])
-finally:
-    f.close()
-
-
+# f = open("C:\\test.csv", 'rt')
+# names = []
+# surnames = []
+# try:
+#     reader = csv.reader(f, delimiter=';', quoting=csv.QUOTE_NONE)
+#     for row in reader:
+#         names.append(row[0])
+#         surnames.append(row[1])
+#     username_editname.send_keys(names[random.randint(0, names.__len__() - 1)])
+#     # surnames.send_keys(surnames[2])
+#     passw_editpass.send_keys(surnames[random.randint(0, names.__len__() - 1)])
+#     # field4.send_keys(somenumbers[random.randint(0, names.__len__() - 1)])
+# finally:
+#     f.close()
 click_login.click()
 
-# #------ADD Children
-# driver.set_page_load_timeout(40)
-# children_link = driver.find_element_by_link_text("Children")
-# children_link.click()
-# driver.set_page_load_timeout(30)
-# add_new_child_link = driver.find_element_by_class_name("add-content-button")
-# add_new_child_link.click()
+#------ADD Children
+driver.set_page_load_timeout(40)
+children_link = driver.find_element_by_link_text("Children")
+children_link.click()
+driver.set_page_load_timeout(30)
+add_new_child_link = driver.find_element_by_class_name("add-content-button")
+add_new_child_link.click()
+
+driver.set_page_load_timeout(30)
+firstname = driver.find_element_by_id("edit-title") # First name
+firstname.send_keys("Children_first1")
+lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
+lastname.send_keys("Children_last1")
 #
-# driver.set_page_load_timeout(10)
-# firstname = driver.find_element_by_id("edit-title") # First name
-# firstname.send_keys("Children_first1")
-# lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
-# lastname.send_keys("Children_last1")
-# #
-# driver.set_page_load_timeout(40)
-# droproom = driver.find_element_by_id("edit-field-child-room-und")
-# flag = False
-# for option in droproom.find_elements_by_tag_name('option'):
-#     if option.text == 'Room #2': # now system has 3 rooms
-#         option.click()
-#         print ('You selected: ' + option.text)
-#         flag = True
-# if (flag != True):
-#     print ("Error. Can't  find Room")
-#
-# dropsex = driver.find_element_by_id("edit-field-child-sex-und")
-# flag = False
-# for option in dropsex.find_elements_by_tag_name('option'):
-#     if option.text == 'Male': #or Female
-#         option.click()
-#         print ('You selected: ' + option.text)
-#         flag = True
-# if (flag != True):
-#     print ("Error. Can't find option sex")
-#
-# dropphotos = driver.find_element_by_id("edit-field-child-photos-und")
-# flag = False
-# for option in dropphotos.find_elements_by_tag_name('option'):
-#     if option.text == 'Allowed': #or Not Allowed
-#         option.click()
-#         print ('You selected: ' + option.text)
-#         flag = True
-# if (flag != True):
-#     print ("Error. Can't find option photos")
-#
-# autoallergies = driver.find_element_by_id("edit-field-child-allergies-und")
-# autoallergies.send_keys("Plums") #list of all allergies
-#
-# add_new_family = driver.find_element_by_id("edit-field-child-family-und")
-# for option in add_new_family.find_elements_by_tag_name('option'):
-#   if option.text == '== Add New Family for this Child ==':
-#         option.click()
-#         print ('Add family: ' + option.text)
-#
-#
-# # save_changes = driver.find_element_by_id("edit-submit")
-# # save_changes.click()
-#
-# link_cancel = driver.find_element_by_class_name("cancel-button")
-# link_cancel.click()
+driver.set_page_load_timeout(40)
+droproom = driver.find_element_by_id("edit-field-child-room-und")
+flag = False
+for option in droproom.find_elements_by_tag_name('option'):
+    if option.text == 'Room #2': # now system has 3 rooms
+        option.click()
+        print ('You selected: ' + option.text)
+        flag = True
+if (flag != True):
+    print red("Error. Can't  find Room")
+
+dropsex = driver.find_element_by_id("edit-field-child-sex-und")
+flag = False
+for option in dropsex.find_elements_by_tag_name('option'):
+    if option.text == 'Male': #or Female
+        option.click()
+        print ('You selected: ' + option.text)
+        flag = True
+if (flag != True):
+    print red("Error. Can't find option sex")
+
+dropphotos = driver.find_element_by_id("edit-field-child-photos-und")
+flag = False
+for option in dropphotos.find_elements_by_tag_name('option'):
+    if option.text == 'Allowed': #or Not Allowed
+        option.click()
+        print ('You selected: ' + option.text)
+        flag = True
+if (flag != True):
+    print red("Error. Can't find option photos")
+
+autoallergies = driver.find_element_by_id("edit-field-child-allergies-und")
+autoallergies.send_keys("Plums") #list of all allergies
+
+add_new_family = driver.find_element_by_id("edit-field-child-family-und")
+for option in add_new_family.find_elements_by_tag_name('option'):
+  if option.text == '== Add New Family for this Child ==':
+        option.click()
+        print ('Add family: ' + option.text)
+
+
+# save_changes = driver.find_element_by_id("edit-submit")
+# save_changes.click()
+
+link_cancel = driver.find_element_by_class_name("cancel-button")
+link_cancel.click()
 #
 # #---- ADD FAMILY
 # driver.get("http://develop.ckids.web.drucode.com/node/add/family")
