@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 #initializing driver, and opening the webpage
 
 chrome_options = webdriver.ChromeOptions()
+
 driver = webdriver.Chrome(
     executable_path=r"c:\chromedriver.exe",
     chrome_options=chrome_options)
