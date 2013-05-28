@@ -11,6 +11,7 @@ driver = webdriver.Chrome(
     executable_path=r"c:\chromedriver.exe",
     chrome_options=chrome_options)
 
+
 # profile = webdriver.FirefoxProfile()
 # profile.set_preference('network.http.phishy-userpass-length', 255)
 # driver = webdriver.Firefox(firefox_profile=profile)
