@@ -13,7 +13,6 @@ from selenium.webdriver.common.keys import Keys
 
 
 profile = webdriver.FirefoxProfile()
-profile.set_preference('network.http.phishy-userpass-length', 255)
 driver = webdriver.Firefox(firefox_profile=profile)
 
 
@@ -232,8 +231,8 @@ click_login.click()
 #
 # # # # save_changes = driver.find_element_by_id("edit-submit")
 # # # # save_changes.click()
-# link_cancel = driver.find_element_by_class_name("cancel-button")
-# link_cancel.click()
+# driver.find_element_by_class_name("cancel-button").click()
+
 
 #-------ADD PHOTOS
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/photos")
@@ -245,7 +244,7 @@ title.send_keys("test photo1")
 
 brouse = driver.find_element_by_id("edit-field-photo-und-0-upload")
 brouse.send_keys("D:\\stock-photo-beautiful-little-girl-isolated-on-a-white-background-76837645.jpg")
-upload = driver.find_element_by_id("edit-field-photo-und-0-upload-button")
-upload.click()
+driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
+driver.find_element_by_class_name("cancel-button").click()
 
 # driver.find_element_by_xpath( .//*[@id='edit-field-photo-und-0-upload'] )
