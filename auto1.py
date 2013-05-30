@@ -247,4 +247,5 @@ brouse.send_keys("D:\\stock-photo-beautiful-little-girl-isolated-on-a-white-back
 driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
 driver.find_element_by_class_name("cancel-button").click()
 
+
 # driver.find_element_by_xpath( .//*[@id='edit-field-photo-und-0-upload'] )
