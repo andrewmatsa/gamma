@@ -260,6 +260,7 @@ http://selenium.googlecode.com/git/docs/api/py/webdriver_support/selenium.webdri
 
 
 
+
 # WebDriverWait(driver, 80).until(driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']"))
 # driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']")
 
