@@ -3,6 +3,7 @@ import random
 from selenium import webdriver
 from colors import red, green, blue
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
 
 #initializing driver, and opening the webpage
 
@@ -13,6 +14,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 profile = webdriver.FirefoxProfile()
+profile.set_preference('network.http.phishy-userpass-length', 255)
 driver = webdriver.Firefox(firefox_profile=profile)
 
 
@@ -236,16 +238,31 @@ click_login.click()
 
 #-------ADD PHOTOS
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/photos")
+driver.set_page_load_timeout(80)
 addphoto = driver.find_element_by_class_name("add-content-button")
 addphoto.click()
-driver.set_page_load_timeout(40)
+driver.set_page_load_timeout(80)
 title = driver.find_element_by_id("edit-title")
 title.send_keys("test photo1")
 
 brouse = driver.find_element_by_id("edit-field-photo-und-0-upload")
 brouse.send_keys("D:\\stock-photo-beautiful-little-girl-isolated-on-a-white-background-76837645.jpg")
 driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
-driver.find_element_by_class_name("cancel-button").click()
+driver.set_page_load_timeout(3000)
+# driver.find_element_by_class_name("cancel-button").click()
+if driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']") != True:
+    driver.set_page_load_timeout(3000)
+
+else:
+    driver.get_screenshot_as_file("D:\\test4.png")
+
+http://selenium.googlecode.com/git/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html
+
+
+
+# WebDriverWait(driver, 80).until(driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']"))
+# driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']")
+
 
 
 # driver.find_element_by_xpath( .//*[@id='edit-field-photo-und-0-upload'] )
