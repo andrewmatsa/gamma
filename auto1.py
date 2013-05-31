@@ -1,9 +1,11 @@
 import csv
 import random
 from selenium import webdriver
+from selenium import selenium
 from colors import red, green, blue
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
+
 
 #initializing driver, and opening the webpage
 
@@ -250,20 +252,22 @@ brouse.send_keys("D:\\stock-photo-beautiful-little-girl-isolated-on-a-white-back
 driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
 driver.set_page_load_timeout(3000)
 # driver.find_element_by_class_name("cancel-button").click()
-if driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']") != True:
-    driver.set_page_load_timeout(3000)
+driver.implicitly_wait(3000)
+driver.implicitly_wait(30)
 
-else:
-    driver.get_screenshot_as_file("D:\\test4.png")
+while i<10:
+    if (element.found):
+break
+    thread.sleep(1)
 
-http://selenium.googlecode.com/git/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html
+http://xpinjection.com/tag/selenium/
+http://www.bizalgo.com/2012/01/14/timing-races-selenium-2-implicit-waits-explicit-waits/
+
+driver.find_element_by_class_name("btn btn-danger form-submit ajax-processed")
+driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-ajax-wrapper']/div/div/div/div[1]/a/img")
+driver.implicitly_wait(3000)
+
+driver.get_screenshot_as_file("D:\\test1.png")
 
 
-
-
-# WebDriverWait(driver, 80).until(driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']"))
 # driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']")
-
-
-
-# driver.find_element_by_xpath( .//*[@id='edit-field-photo-und-0-upload'] )
