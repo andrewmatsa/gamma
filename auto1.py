@@ -5,7 +5,7 @@ from selenium import selenium
 from colors import red, green, blue
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
-
+import thread
 
 #initializing driver, and opening the webpage
 
@@ -246,28 +246,11 @@ addphoto.click()
 driver.set_page_load_timeout(80)
 title = driver.find_element_by_id("edit-title")
 title.send_keys("test photo1")
-
-brouse = driver.find_element_by_id("edit-field-photo-und-0-upload")
-brouse.send_keys("D:\\stock-photo-beautiful-little-girl-isolated-on-a-white-background-76837645.jpg")
+browse = driver.find_element_by_id("edit-field-photo-und-0-upload")
+browse.send_keys("D:\\stock-photo-beautiful-little-girl-isolated-on-a-white-background-768376dfdf45.jpg")
 driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
-driver.set_page_load_timeout(3000)
-# driver.find_element_by_class_name("cancel-button").click()
-driver.implicitly_wait(3000)
-driver.implicitly_wait(30)
 
-while i<10:
-    if (element.found):
-break
-    thread.sleep(1)
+wait = WebDriverWait(driver, 10)
+wait.until(lambda driver: driver.find_element_by_xpath("//*[@id='edit-field-photo-und-0-ajax-wrapper']/div/div/div/div[1]/a/img"))
+driver.get_screenshot_as_file("D:\\test2.png")
 
-http://xpinjection.com/tag/selenium/
-http://www.bizalgo.com/2012/01/14/timing-races-selenium-2-implicit-waits-explicit-waits/
-
-driver.find_element_by_class_name("btn btn-danger form-submit ajax-processed")
-driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-ajax-wrapper']/div/div/div/div[1]/a/img")
-driver.implicitly_wait(3000)
-
-driver.get_screenshot_as_file("D:\\test1.png")
-
-
-# driver.find_element_by_xpath(".//*[@id='edit-field-photo-und-0-remove-button']")
