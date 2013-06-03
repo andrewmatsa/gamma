@@ -241,16 +241,18 @@ click_login.click()
 #-------ADD PHOTOS
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/photos")
 driver.set_page_load_timeout(80)
+
 addphoto = driver.find_element_by_class_name("add-content-button")
 addphoto.click()
 driver.set_page_load_timeout(80)
 title = driver.find_element_by_id("edit-title")
 title.send_keys("test photo1")
 browse = driver.find_element_by_id("edit-field-photo-und-0-upload")
-browse.send_keys("D:\\stock-photo-beautiful-little-girl-isolated-on-a-white-background-768376dfdf45.jpg")
+browse.send_keys("D:\\stock-photo-portrait-of-a-woman-writing-notes-120555064.jpg")
 driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
 
 wait = WebDriverWait(driver, 10)
 wait.until(lambda driver: driver.find_element_by_xpath("//*[@id='edit-field-photo-und-0-ajax-wrapper']/div/div/div/div[1]/a/img"))
 driver.get_screenshot_as_file("D:\\test2.png")
+driver.fin
 
