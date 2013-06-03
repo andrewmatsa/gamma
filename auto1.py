@@ -46,19 +46,19 @@ passw_editpass.send_keys("creche_admin")
 #     f.close()
 click_login.click()
 
-# #------ADD Children
-# driver.set_page_load_timeout(40)
-# children_link = driver.find_element_by_link_text("Children")
-# children_link.click()
-# driver.set_page_load_timeout(30)
-# add_new_child_link = driver.find_element_by_class_name("add-content-button")
-# add_new_child_link.click()
-#
-# driver.set_page_load_timeout(30)
-# firstname = driver.find_element_by_id("edit-title") # First name
-# firstname.send_keys("Children_first1")
-# lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
-# lastname.send_keys("Children_last1")
+#------ADD Children
+driver.set_page_load_timeout(300)
+children_link = driver.find_element_by_link_text("Children")
+children_link.click()
+driver.set_page_load_timeout(300)
+add_new_child_link = driver.find_element_by_class_name("add-content-button")
+add_new_child_link.click()
+
+driver.set_page_load_timeout(300)
+firstname = driver.find_element_by_id("edit-title") # First name
+firstname.send_keys("Children_first1")
+lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
+lastname.send_keys("Children_last1")
 # #
 # driver.set_page_load_timeout(40)
 # droproom = driver.find_element_by_id("edit-field-child-room-und")
@@ -240,19 +240,31 @@ click_login.click()
 
 #-------ADD PHOTOS
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/photos")
-driver.set_page_load_timeout(80)
+driver.set_page_load_timeout(300)
 
 addphoto = driver.find_element_by_class_name("add-content-button")
 addphoto.click()
-driver.set_page_load_timeout(80)
+driver.set_page_load_timeout(300)
 title = driver.find_element_by_id("edit-title")
 title.send_keys("test photo1")
 browse = driver.find_element_by_id("edit-field-photo-und-0-upload")
-browse.send_keys("D:\\stock-photo-portrait-of-a-woman-writing-notes-120555064.jpg")
+browse.send_keys("D:\\vetton_ru_877.jpg")
 driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
 
 wait = WebDriverWait(driver, 10)
 wait.until(lambda driver: driver.find_element_by_xpath("//*[@id='edit-field-photo-und-0-ajax-wrapper']/div/div/div/div[1]/a/img"))
 driver.get_screenshot_as_file("D:\\test2.png")
-driver.fin
 
+# driver.find_elements_by_class_name("form-select")
+# driver.find_element_by_name("field_photo_child[und][]")
+
+children_in_photo = driver.find_element_by_id("edit-field-photo-child-und")
+
+flag2 = False
+for option in children_in_photo.find_elements_by_tag_name('option'):
+     if option.text == "Children_first1 Children_last1":
+         option.click()
+         print green('You selected: ' + option.text)
+         flag2 = True
+if (flag2 != True):
+     print red("Error. Can't find children " + option.text)
