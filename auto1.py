@@ -14,7 +14,6 @@ import thread
 #     executable_path=r"c:\chromedriver.exe",
 #     chrome_options=chrome_options)
 
-
 profile = webdriver.FirefoxProfile()
 profile.set_preference('network.http.phishy-userpass-length', 255)
 driver = webdriver.Firefox(firefox_profile=profile)
@@ -47,7 +46,9 @@ print green ('Login as: "creche_admin / creche_admin"')
 #     f.close()
 click_login.click()
 
-#------ADD Children
+
+
+#region------ ADD Children
 print blue("Click link 'Children'")
 driver.set_page_load_timeout(300)
 children_link = driver.find_element_by_link_text("Children")
@@ -57,17 +58,13 @@ add_new_child_link = driver.find_element_by_class_name("add-content-button")
 add_new_child_link.click()
 
 print blue("Creating child...")
-
-firstname = driver.find_element_by_id("edit-title")
-wait = WebDriverWait(driver, 10)
-firstname.send_keys("Children_first2")
-lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value")
-lastname.send_keys("Children_last2")
+# wait = WebDriverWait(driver, 10)
+driver.set_page_load_timeout(300)
+firstname_child = driver.find_element_by_id("edit-title")
+firstname_child.send_keys("Children_first2")
+lastname_child = driver.find_element_by_id("edit-field-child-second-name-und-0-value")
+lastname_child.send_keys("Children_last2")
 print green('Created child name: "Children_first2 / Children_last2"')
-
-
-# region Some commented a code
-
 
 driver.set_page_load_timeout(40)
 droproom = driver.find_element_by_id("edit-field-child-room-und")
@@ -115,16 +112,17 @@ for option in add_new_family.find_elements_by_tag_name('option'):
 
 driver.find_element_by_class_name("cancel-button").click()
 
+#endregion children
 
-#---- ADD FAMILY
+#region------ ADD FAMILY
 print blue("Click 'Family'")
 driver.get("http://develop.ckids.web.drucode.com/node/add/family")
 
 if driver.get == False:
     print ('Cant open this page' + driver.get)
 driver.set_page_load_timeout(40)
-firstname = driver.find_element_by_id("edit-title") # First name
-firstname.send_keys("Parren_first1")
+firstname_family = driver.find_element_by_id("edit-title") # First name
+firstname_family.send_keys("Parren_first1")
 lastname = driver.find_element_by_id("edit-field-family-second-name-und-0-value") # Last name
 lastname.send_keys("Parrent_last1")
 email_family = driver.find_element_by_id("edit-field-family-email-und-0-email")
@@ -132,8 +130,8 @@ email_family.send_keys("testauto@gmail.com")
 phone = driver.find_element_by_id("edit-field-family-phone-und-0-value")
 phone.send_keys("+38090 9090908 09088080")
 #---add parents / Guardians
-firstname = driver.find_element_by_id("edit-fgm-node-family-form-group-additional-parents-fields-items-0-field-family-addition-first-name-und-value") # First name
-firstname.send_keys("Guardians_first1")
+firstname_gua = driver.find_element_by_id("edit-fgm-node-family-form-group-additional-parents-fields-items-0-field-family-addition-first-name-und-value") # First name
+firstname_gua.send_keys("Guardians_first1")
 lastname = driver.find_element_by_id("edit-fgm-node-family-form-group-additional-parents-fields-items-0-field-family-add-second-name-und-value") # Last name
 lastname.send_keys("Guardians_last1")
 phone = driver.find_element_by_id("edit-fgm-node-family-form-group-additional-parents-fields-items-0-field-family-addition-phone-und-value")
@@ -147,16 +145,17 @@ phone.send_keys("+3809809 808909 800 09")
 link_cancel = driver.find_element_by_class_name("cancel-button")
 link_cancel.click()
 
+#endregion
 
-#---- ADD Carer
+#region ------ ADD Carer
 print blue("Click 'Carer'")
 driver.get("http://develop.ckids.web.drucode.com/node/add/carer")
 driver.set_page_load_timeout(40)
 print blue("Creating 'Carer'")
-firstname = driver.find_element_by_id("edit-title") # First name
-firstname.send_keys("Carer_first1")
-lastname = driver.find_element_by_id("edit-field-carer-second-name-und-0-value") # Last name
-lastname.send_keys("Carer_last1")
+firstname_carer = driver.find_element_by_id("edit-title") # First name
+firstname_carer.send_keys("Carer_first1")
+lastname_carer = driver.find_element_by_id("edit-field-carer-second-name-und-0-value") # Last name
+lastname_carer.send_keys("Carer_last1")
 email_family = driver.find_element_by_id("edit-field-carer-email-und-0-email")
 email_family.send_keys("testauto@gmail.com")
 
@@ -178,13 +177,6 @@ driver.find_element_by_id("edit-field-carer-photo-und-0-upload-button").click()
 print green("Added photo 'Carer'")
 wait = WebDriverWait(driver, 10)
 wait.until(lambda driver: driver.find_element_by_xpath("//*[@id='edit-field-carer-photo-und-0-remove-button']"))
-
-
-
-
-
-
-
 
 droproom1 = driver.find_element_by_id("edit-field-carer-room-mon-und")
 flag = False
@@ -260,15 +252,16 @@ if (flag != True):
 
 driver.find_element_by_class_name("cancel-button").click()
 
-# endregion
+#endregion
 
-#-------ADD PHOTOS
+# region ------ ADD Photo
 print blue("Adding photo... Click 'Photos'")
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/photos")
+
 driver.find_element_by_class_name("add-content-button").click()
-WebDriverWait(driver, 10)
-title = driver.find_element_by_id("edit-title")
-title.send_keys("test photo1")
+wait.until(lambda driver: driver.find_element_by_xpath("//*[@id='edit-title']"))
+title_photo = driver.find_element_by_id("edit-title")
+title_photo.send_keys("test photo1")
 
 print blue('selecting photo... ')
 browse = driver.find_element_by_id("edit-field-photo-und-0-upload")
@@ -291,3 +284,4 @@ for option in children_in_photo.find_elements_by_tag_name('option'):
          flag2 = True
 if (flag2 != True):
      print red("Error. Can't find children " + option.text)
+# endregion Photo
