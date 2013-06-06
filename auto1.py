@@ -29,6 +29,7 @@ passw_editpass = driver.find_element_by_id("edit-pass")
 click_login = driver.find_element_by_id("edit-submit")
 username_editname.send_keys("creche_admin")
 passw_editpass.send_keys("creche_admin")
+print green ('Login as: "creche_admin / creche_admin"')
 
 # f = open("C:\\test.csv", 'rt')
 # names = []
@@ -55,18 +56,23 @@ add_new_child_link = driver.find_element_by_class_name("add-content-button")
 add_new_child_link.click()
 
 driver.set_page_load_timeout(300)
-firstname = driver.find_element_by_id("edit-title") # First name
-firstname.send_keys("Children_first1")
-lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value") # Last name
-lastname.send_keys("Children_last1")
-# #
+firstname = driver.find_element_by_id("edit-title")
+firstname.send_keys("Children_first2")
+lastname = driver.find_element_by_id("edit-field-child-second-name-und-0-value")
+lastname.send_keys("Children_last2")
+print green ('Create child: "Children_first2 / Children_last2"')
+
+
+# region Some commented a code
+
+#
 # driver.set_page_load_timeout(40)
 # droproom = driver.find_element_by_id("edit-field-child-room-und")
 # flag = False
 # for option in droproom.find_elements_by_tag_name('option'):
 #     if option.text == 'Room #2': # now system has 3 rooms
 #         option.click()
-#         print ('You selected: ' + option.text)
+#         print green('You selected: ' + option.text)
 #         flag = True
 # if (flag != True):
 #     print red("Error. Can't  find Room")
@@ -76,7 +82,7 @@ lastname.send_keys("Children_last1")
 # for option in dropsex.find_elements_by_tag_name('option'):
 #     if option.text == 'Male': #or Female
 #         option.click()
-#         print ('You selected: ' + option.text)
+#         print green('You selected: ' + option.text)
 #         flag = True
 # if (flag != True):
 #     print red("Error. Can't find option sex")
@@ -86,7 +92,7 @@ lastname.send_keys("Children_last1")
 # for option in dropphotos.find_elements_by_tag_name('option'):
 #     if option.text == 'Allowed': #or Not Allowed
 #         option.click()
-#         print ('You selected: ' + option.text)
+#         print green('You selected: ' + option.text)
 #         flag = True
 # if (flag != True):
 #     print red("Error. Can't find option photos")
@@ -98,11 +104,11 @@ lastname.send_keys("Children_last1")
 # for option in add_new_family.find_elements_by_tag_name('option'):
 #   if option.text == '== Add New Family for this Child ==':
 #         option.click()
-#         print ('Add family: ' + option.text)
+#         print green('Add family: ' + option.text)
 #
 #
-# # save_changes = driver.find_element_by_id("edit-submit")
-# # save_changes.click()
+# save_changes = driver.find_element_by_id("edit-submit")
+# save_changes.click()
 #
 # link_cancel = driver.find_element_by_class_name("cancel-button")
 # link_cancel.click()
@@ -237,32 +243,35 @@ lastname.send_keys("Children_last1")
 # # # # save_changes.click()
 # driver.find_element_by_class_name("cancel-button").click()
 
+# endregion
 
 #-------ADD PHOTOS
+print blue("Adding photo...")
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/photos")
 driver.set_page_load_timeout(300)
-
 addphoto = driver.find_element_by_class_name("add-content-button")
 addphoto.click()
-driver.set_page_load_timeout(300)
+
+WebDriverWait(driver, 10)
 title = driver.find_element_by_id("edit-title")
 title.send_keys("test photo1")
+
+print blue('selecting photo... ')
 browse = driver.find_element_by_id("edit-field-photo-und-0-upload")
-browse.send_keys("D:\\vetton_ru_877.jpg")
+browse.send_keys("D:\\stock-photo-girl-with-bubbles-104648267.jpg")
 driver.find_element_by_id("edit-field-photo-und-0-upload-button").click()
 
+print green("Added photo")
 wait = WebDriverWait(driver, 10)
 wait.until(lambda driver: driver.find_element_by_xpath("//*[@id='edit-field-photo-und-0-ajax-wrapper']/div/div/div/div[1]/a/img"))
 driver.get_screenshot_as_file("D:\\test2.png")
+print green("Screenshot is created")
 
-# driver.find_elements_by_class_name("form-select")
-# driver.find_element_by_name("field_photo_child[und][]")
-
+print blue("Finding child in photo...")
 children_in_photo = driver.find_element_by_id("edit-field-photo-child-und")
-
 flag2 = False
 for option in children_in_photo.find_elements_by_tag_name('option'):
-     if option.text == "Children_first1 Children_last1":
+     if option.text == "Children_first2 Children_last2":
          option.click()
          print green('You selected: ' + option.text)
          flag2 = True
