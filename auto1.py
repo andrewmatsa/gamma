@@ -291,15 +291,13 @@ print blue("Adding event... Click 'Event'")
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/events")
 driver.find_element_by_link_text("Add New Event").click()
 WebDriverWait(driver, 10)
-date_event = driver.find_element_by_id("edit-field-event-date-und-0-value-datepicker-popup-0").clear()
-# date_event.send_keys("123")
-
+# date_event = driver.find_element_by_class_name("date-clear form-text hasDatepicker date-popup-init").clear()
+date_event = driver.find_element_by_css_selector("ui-state-default ui-state-active")
 
 
 # title_event = driver.find_element_by_id("edit-title")
 # title_event.send_keys("test title event1")
 # driver.find_element_by_id("edit-body-und-0-value").send_keys("test description")
-
 
 
 # endregion
