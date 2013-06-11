@@ -302,7 +302,7 @@ driver.find_element_by_id("edit-title").send_keys("test")
 driver.find_element_by_id("edit-body-und-0-value").send_keys("test description")
 print green("Added event...")
 # driver.find_element_by_id("edit-submit").click()
-# driver.find_element_by_class_name("cancel-button").click()
+driver.find_element_by_class_name("cancel-button").click()
 
 # endregion
 
