@@ -304,6 +304,7 @@ print green("Added event...")
 # driver.find_element_by_id("edit-submit").click()
 driver.find_element_by_class_name("cancel-button").click()
 
+
 # endregion
 
 # region ------ Records
