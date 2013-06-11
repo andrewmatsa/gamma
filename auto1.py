@@ -109,9 +109,7 @@ click_login.click()
 #         print green('Add family: ' + option.text)
 #
 #
-# # save_changes = driver.find_element_by_id("edit-submit")
-# # save_changes.click()
-#
+# driver.find_element_by_id("edit-submit").click()
 # driver.find_element_by_class_name("cancel-button").click()
 
 #endregion children
@@ -142,10 +140,8 @@ click_login.click()
 # # add_another_item = driver.find_elements_by_link_text("Add another item")
 # # add_another_item.click()
 #
-# # # save_changes = driver.find_element_by_id("edit-submit")
-# # # save_changes.click()
-# link_cancel = driver.find_element_by_class_name("cancel-button")
-# link_cancel.click()
+# driver.find_element_by_id("edit-submit").click()
+# driver.find_element_by_class_name("cancel-button").click()
 
 #endregion
 
@@ -250,8 +246,7 @@ click_login.click()
 # if (flag != True):
 #     print red("Error. Can't find room: " + option.text)
 #
-# # # # driver.find_element_by_id("edit-submit").click()
-#
+# driver.find_element_by_id("edit-submit").click()
 # driver.find_element_by_class_name("cancel-button").click()
 
 #endregion
@@ -296,16 +291,18 @@ class add_event (unittest.TestCase):
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/events")
 WebDriverWait(driver, 10)
 driver.find_element_by_link_text("Add New Event").click()
+print blue("Adding event...")
 WebDriverWait(driver, 10)
 # date_event = driver.find_element_by_class_name("date-clear form-text hasDatepicker date-popup-init").clear()
 date_event = driver.find_element_by_xpath("//*[@id='edit-field-event-date-und-0-value-datepicker-popup-0']").clear()
-date_event.send_keys("123546")
-
-
-# title_event = driver.find_element_by_id("edit-title")
-# title_event.send_keys("test title event1")
-# driver.find_element_by_id("edit-body-und-0-value").send_keys("test description")
-
+WebDriverWait(driver, 10)
+driver.find_element_by_id("edit-field-event-date-und-0-value-datepicker-popup-0").click()
+driver.find_element_by_xpath("//*[@id='ui-datepicker-div']/table/tbody/tr[5]/td[1]/a").click()
+driver.find_element_by_id("edit-title").send_keys("test")
+driver.find_element_by_id("edit-body-und-0-value").send_keys("test description")
+print green("Added event...")
+# driver.find_element_by_id("edit-submit").click()
+# driver.find_element_by_class_name("cancel-button").click()
 
 # endregion
 
