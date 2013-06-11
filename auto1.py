@@ -1,7 +1,8 @@
+from selenium import webdriver
+import unittest
+from selenium import selenium
 import csv
 import random
-from selenium import webdriver
-from selenium import selenium
 from colors import red, green, blue
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -67,6 +68,7 @@ click_login.click()
 # print green('Created child name: "Children_first2 / Children_last2"')
 #
 # driver.set_page_load_timeout(40)
+
 # droproom = driver.find_element_by_id("edit-field-child-room-und")
 # flag = False
 # for option in droproom.find_elements_by_tag_name('option'):
@@ -287,8 +289,12 @@ click_login.click()
 # # endregion
 
 # region ------ Add Event
-print blue("Adding event... Click 'Event'")
+
+class add_event (unittest.TestCase):
+
+    print blue("Adding event... Click 'Event'")
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/events")
+WebDriverWait(driver, 10)
 driver.find_element_by_link_text("Add New Event").click()
 WebDriverWait(driver, 10)
 # date_event = driver.find_element_by_class_name("date-clear form-text hasDatepicker date-popup-init").clear()
