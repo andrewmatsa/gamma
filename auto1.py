@@ -285,25 +285,27 @@ click_login.click()
 
 # region ------ Add Event
 
-class add_event (unittest.TestCase):
+class Add_Event (unittest.TestCase):
 
     print blue("Adding event... Click 'Event'")
 driver.get("http://develop.ckids.web.drucode.com/centre/xyz-childrens-creche/events")
 WebDriverWait(driver, 10)
 driver.find_element_by_link_text("Add New Event").click()
 print blue("Adding event...")
-WebDriverWait(driver, 10)
+wait = WebDriverWait(driver,10)
 # date_event = driver.find_element_by_class_name("date-clear form-text hasDatepicker date-popup-init").clear()
+wait.until(lambda driver: driver.find_element_by_xpath("//*[@id='edit-field-event-date-und-0-value-datepicker-popup-0']"))
 date_event = driver.find_element_by_xpath("//*[@id='edit-field-event-date-und-0-value-datepicker-popup-0']").clear()
 WebDriverWait(driver, 10)
 driver.find_element_by_id("edit-field-event-date-und-0-value-datepicker-popup-0").click()
 driver.find_element_by_xpath("//*[@id='ui-datepicker-div']/table/tbody/tr[5]/td[1]/a").click()
 driver.find_element_by_id("edit-title").send_keys("test")
 driver.find_element_by_id("edit-body-und-0-value").send_keys("test description")
-print green("Added event...")
+print green("Added event :) ")
 # driver.find_element_by_id("edit-submit").click()
 driver.find_element_by_class_name("cancel-button").click()
-
+driver.get("http://develop.ckids.web.drucode.com/")
+WebDriverWait(driver, 10)
 
 # endregion
 
@@ -315,8 +317,16 @@ driver.find_element_by_class_name("cancel-button").click()
 # endregion
 
 # region ------ Add Rooms
-
-
+class Add_Rooms(unittest.TestCase):
+    print blue("Adding room... Click 'Rooms'")
+driver.find_element_by_link_text("Rooms").click()
+WebDriverWait(driver, 10)
+driver.find_element_by_link_text("Add New Room").click()
+room_name = driver.find_element_by_id("edit-title")
+room_name.send_keys("room test1")
+# driver.find_element_by_id("edit-submit").click()
+driver.find_element_by_class_name("cancel-button").click()
+print green("Added room :) ")
 
 
 
@@ -336,23 +346,23 @@ driver.find_element_by_class_name("cancel-button").click()
 
 # endregion
 
-
-class PythonOrgSearch(unittest.TestCase):
-
-    def setUp(self):
-        self.driver = webdriver.Firefox()
-
-    def test_search_in_python_org(self):
-        driver = self.driver
-        driver.get("http://www.python.org")
-        self.assertIn("Python", driver.title)
-        elem = driver.find_element_by_name("q")
-        elem.send_keys("selenium")
-        elem.send_keys(Keys.RETURN)
-        self.assertIn("Google", driver.title)
-
-    def tearDown(self):
-        self.driver.close()
-
-if __name__ == "__main__":
-    unittest.main()
+#
+# class PythonOrgSearch(unittest.TestCase):
+#
+#     def setUp(self):
+#         self.driver = webdriver.Firefox()
+#
+#     def test_search_in_python_org(self):
+#         driver = self.driver
+#         driver.get("http://www.python.org")
+#         self.assertIn("Python", driver.title)
+#         elem = driver.find_element_by_name("q")
+#         elem.send_keys("selenium")
+#         elem.send_keys(Keys.RETURN)
+#         self.assertIn("Google", driver.title)
+#
+#     def tearDown(self):
+#         self.driver.close()
+#
+# if __name__ == "__main__":
+#     unittest.main()
